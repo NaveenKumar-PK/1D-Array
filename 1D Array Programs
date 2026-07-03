@@ -1,0 +1,214 @@
+Array Palindrome:
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int i=0;
+        int j=n-1;
+        while(i<j){
+            if(arr[i]!=arr[j]){
+                System.out.println("No");
+                return;
+            }
+            i++;
+            j--;
+        }
+        System.out.println("Yes");
+    }
+}
+
+Array reverse:
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int i=0;int j=n-1;
+        while(i<j){
+            int t=arr[i];
+            arr[i]=arr[j];
+            arr[j]=t;
+            i++;
+            j--;
+        }
+        for(int k=0;k<n;k++){
+            System.out.print(arr[k] + " ");
+        }
+    }
+}
+
+Array 1D - Pair the Container 2:
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        Arrays.sort(arr);
+        int i=0;int j=n-1;
+        while(i<=j){
+            if(i==j){
+                System.out.println(arr[j]+" "+"0");
+                return;
+            }
+            System.out.println(arr[j]+" "+arr[i]);
+            i++;
+            j--;
+        }
+    }
+}
+
+Arrays 1D – Print All Leader Elements:
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int leader=arr[n-1];
+        ArrayList <Integer>list=new ArrayList();
+        list.add(leader);
+        for(int i=n-2;i>=0;i--){
+            if(arr[i]>leader){
+                leader=arr[i];
+                list.add(leader);
+            }
+        }
+        Collections.reverse(list);
+        for(int i:list){
+        System.out.print(i+" ");
+        }
+    }
+    }
+
+
+Leetcode(1) Two Sum:
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int a=nums.length;
+        int i,j;
+        for( i=0;i<a;i++){
+            for(j=i+1;j<a;j++){
+                if(nums[i]+nums[j]==target)
+                {
+                    return new int[]{i,j};
+                }
+            }
+        }
+        return new int[]{};
+    
+
+        
+    }
+}
+
+
+Leetcode(283) Moves Zeroes:
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int n=nums.length;
+        int j=0;
+        for(int i=0;i<n;i++){
+            if(nums[i]!=0){
+                nums[j]=nums[i];
+                j++;
+            }
+            
+        }
+        while(j<n){
+            nums[j]=0;
+            j++;
+        }
+        
+    }
+}
+
+
+
+leetcode(860) Lemonade change:
+class Solution {
+    public boolean lemonadeChange(int[] bills) {
+        int n=bills.length;
+        int a=0;
+        int b=0;
+        int c=0;
+        
+        for(int i=0;i<n;i++){
+           if(bills[i]==5){
+            a++;
+           }
+           else if(bills[i]==10){
+            if(a>=1){
+                a--;
+                b++;
+            }
+            else return false;
+           }
+           else{
+            if(a>=1 && b>=1){
+                a--;
+                b--;
+                c++;
+            }
+            else if(a>=3){
+                a-=3;
+                c++;
+            }
+            else return false;
+           }
+        }
+        return true;
+            
+        
+    }
+}
+
+
+Leetcode(11) Container With Most Water:
+class Solution {
+    public int maxArea(int[] height) {
+        int maxArea = 0;
+        int left = 0;
+        int right = height.length - 1;
+
+        while (left < right) {
+            maxArea = Math.max(maxArea, (right - left) * Math.min(height[left], height[right]));
+
+            if (height[left] < height[right]) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+
+        return maxArea;        
+    }
+}
